@@ -4,7 +4,7 @@ from .core import *
 import re
 
 class Videos(object):
-    
+
     def __init__(self, ProxyDictionary, keywords=[], *args):
         self.keywords = keywords
         self.ProxyDictionary = ProxyDictionary
@@ -34,7 +34,7 @@ class Videos(object):
         return BeautifulSoup(html, "lxml")
 
     def _scrapLiVideos(self, soup_data):
-        return soup_data.find_all("li", { "class" : re.compile(".*videoblock videoBox.*") } )
+        return soup_data.find(id="videoSearchResult").find_all("li", { "class" : re.compile(".*videoblock videoBox.*") } )
 
     def _scrapVideoInfo(self, div_el):
         data = {
